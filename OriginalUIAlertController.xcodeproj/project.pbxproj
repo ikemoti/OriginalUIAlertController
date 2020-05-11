@@ -15,6 +15,7 @@
 		0E2797DE24691DC30069C5CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E2797DC24691DC30069C5CA /* LaunchScreen.storyboard */; };
 		0E2797E924691DC30069C5CA /* OriginalUIAlertControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2797E824691DC30069C5CA /* OriginalUIAlertControllerTests.swift */; };
 		0E2797F424691DC30069C5CA /* OriginalUIAlertControllerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2797F324691DC30069C5CA /* OriginalUIAlertControllerUITests.swift */; };
+		0E27980224692A040069C5CA /* DialogAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E27980124692A040069C5CA /* DialogAnimation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		0E2797EF24691DC30069C5CA /* OriginalUIAlertControllerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OriginalUIAlertControllerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E2797F324691DC30069C5CA /* OriginalUIAlertControllerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OriginalUIAlertControllerUITests.swift; sourceTree = "<group>"; };
 		0E2797F524691DC30069C5CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0E27980124692A040069C5CA /* DialogAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogAnimation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			children = (
 				0E2797D124691DC20069C5CA /* AppDelegate.swift */,
 				0E2797D324691DC20069C5CA /* SceneDelegate.swift */,
+				0E27980124692A040069C5CA /* DialogAnimation.swift */,
 				0E2797D524691DC20069C5CA /* ViewController.swift */,
 				0E2797D724691DC20069C5CA /* Main.storyboard */,
 				0E2797DA24691DC30069C5CA /* Assets.xcassets */,
@@ -259,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E27980224692A040069C5CA /* DialogAnimation.swift in Sources */,
 				0E2797D624691DC20069C5CA /* ViewController.swift in Sources */,
 				0E2797D224691DC20069C5CA /* AppDelegate.swift in Sources */,
 				0E2797D424691DC20069C5CA /* SceneDelegate.swift in Sources */,
