@@ -8,7 +8,6 @@
 
 import UIKit
 import Foundation
-
 public class DialogAction: NSObject {
     public enum ActionStyle {
         case `default`
@@ -19,19 +18,21 @@ public class DialogAction: NSObject {
     private var handler: ((_ action: DialogAction) -> Void)?
     fileprivate var style: ActionStyle
     fileprivate var title: String
+    //titleCoorの初期値設定
     fileprivate var titleColor: UIColor {
         switch self.style {
         case .default: return UIColor.black
-        case .cancel:  return Color.Text.Comment.w50
+        case .cancel:  return UIColor.black
         case .destructive:return  UIColor.red
         case let .custom(color, _):return color
         }
     }
+    //titleFontの初期値設定
     fileprivate var titleFont: UIFont {
         switch self.style {
-        case .default: return UIFont.boldJaFont(ofSize: 14)
-        case .cancel:  return UIFont.jaFont(ofSize: 14)
-        case .destructive:return  UIFont.boldJaFont(ofSize: 14)
+        case .default: return UIFont.boldSystemFont(ofSize: 14)
+        case .cancel:  return UIFont.systemFont(ofSize: 14)
+        case .destructive:return  UIFont.boldSystemFont(ofSize: 14)
         case let .custom(_ ,font):return font
         }
     }
@@ -41,6 +42,7 @@ public class DialogAction: NSObject {
         self.title = title
     }
 }
+
 public class DialogController: UIViewController, UIViewControllerTransitioningDelegate {
     private let titleLabel: AppLabel = .init(appearance: .headline(lang: .ja, textColor: Color.Text.w100))
     private let messageLabel: AppLabel = .init(appearance: .body2(lang:.ja, textColor: Color.Text.w70))
@@ -49,6 +51,7 @@ public class DialogController: UIViewController, UIViewControllerTransitioningDe
     private let bannerView: UIImageView = .init()
     internal let dialogStackView: UIStackView = .init()
     private var actions = [DialogAction]()
+    //土台のUIView
     lazy var baseView: UIView = {
         let view = UIView()
         view.backgroundColor =  UIColor.black.withAlphaComponent(0.15)
@@ -56,6 +59,7 @@ public class DialogController: UIViewController, UIViewControllerTransitioningDe
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    //表示される土台のview
     lazy var alertView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -69,6 +73,7 @@ public class DialogController: UIViewController, UIViewControllerTransitioningDe
         modalPresentationStyle = UIModalPresentationStyle.custom
         transitioningDelegate = self
     }
+    //簡易イニシャライザ
     public convenience init(title: String, message: String, banner: UIImage?) {
         self.init(nibName: nil, bundle: nil)
         titleLabel.text = title
@@ -89,9 +94,11 @@ public class DialogController: UIViewController, UIViewControllerTransitioningDe
         setLayout()
         setAttrributes()
     }
+    //ボタンタップ時の挙動
     @objc private func buttonEvent(sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
+    //出現時
     public func animationController(forDismissed _: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return DialogAnimation(isPresent: true)
     }
@@ -108,7 +115,7 @@ public class DialogController: UIViewController, UIViewControllerTransitioningDe
             border.translatesAutoresizingMaskIntoConstraints = false
             border.widthAnchor.constraint(equalToConstant: 1).isActive = true
             border.heightAnchor.constraint(equalToConstant: 44).isActive = true
-            border.backgroundColor = Color.Border.dialog
+            border.backgroundColor = UIColor.gray
             buttonStackview.addArrangedSubview(border)
         }
         buttonStackview.addArrangedSubview(button)
@@ -117,6 +124,7 @@ public class DialogController: UIViewController, UIViewControllerTransitioningDe
         }
         actions.append(action)
     }
+    //消失時
     public func animationController(
         forPresented _: UIViewController,
         presenting _: UIViewController,
@@ -192,7 +200,7 @@ extension DialogController {
         dialogStackView.alignment = .fill
         dialogStackView.distribution = .equalSpacing
         dialogStackView.spacing = 0
-        topBorder.backgroundColor = Color.Border.dialog
+        topBorder.backgroundColor = UIColor.black
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 0
         messageLabel.textAlignment = .center
